@@ -1,0 +1,23 @@
+# Dos contenedores de la misma imagen conectados por gRPC
+services:
+  servidor:
+    build: .
+    image: grpc-img
+    container_name: servidor
+    hostname: servidor
+    command: ["python3", "server.py"]
+    networks: [grpc-net]
+
+  cliente:
+    build: .
+    image: grpc-img
+    container_name: cliente
+    hostname: cliente
+    command: ["python3", "client.py"]
+    environment:
+      - SERVIDOR=servidor:50051
+    depends_on: [servidor]
+    networks: [grpc-net]
+
+networks:
+  grpc-net:
