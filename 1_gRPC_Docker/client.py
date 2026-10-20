@@ -9,7 +9,7 @@ import saludo_pb2_grpc
 
 # Nombre del contenedor servidor dentro de la red de Docker
 SERVIDOR = os.environ.get("SERVIDOR", "servidor:50051")
-
+DOCKER_CONTEXT = os.environ.get("DEBIAN_FRONTEND")
 
 def ciclo():
     canal = grpc.insecure_channel(SERVIDOR)
@@ -18,6 +18,7 @@ def ciclo():
 
     cnt = 0
     while True:
+        print(DOCKER_CONTEXT)
         # wait_for_ready espera a que el servidor esté disponible
         r = stub.Decir(saludo_pb2.Peticion(nombre=f"{nombre} #{cnt}"), wait_for_ready=True)
         print(f"{cnt}: {r.mensaje}")
