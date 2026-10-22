@@ -1,5 +1,5 @@
 CAM_FRONT/
 
 1_gRPC_Docker/*.jpg
-
+*.jpg
 *_pb2*.py

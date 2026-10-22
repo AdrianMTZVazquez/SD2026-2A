@@ -17,7 +17,7 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /workspace
 
-COPY saludo.proto server.py client.py ./
+COPY saludo.proto server.py client.py imgs/ ./
 
 # Se genera el código de Python a partir del .proto
 RUN python3 -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. saludo.proto
