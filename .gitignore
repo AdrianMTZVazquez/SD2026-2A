@@ -1,5 +1,8 @@
 CAM_FRONT/
 
+# Ignore images
 1_gRPC_Docker/*.jpg
 *.jpg
+
+# Ignore generated files
 *_pb2*.py
