@@ -1,0 +1,16 @@
+syntax = "proto3";
+ 
+message Fragmento {
+  string nombre = 1;   // solo hace falta en el primero
+  bytes  datos  = 2;
+}
+ 
+message Resumen {
+  string nombre          = 1;
+  int64  bytes_recibidos = 2;
+  string sha256          = 3;
+}
+ 
+service Imagenes {
+  rpc Subir (stream Fragmento) returns (Resumen);
+}

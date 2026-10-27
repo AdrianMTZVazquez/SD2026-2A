@@ -1,0 +1,10 @@
+# Equipo B: solo el cliente; SERVIDOR=<IP del equipo A>:50051 (desde .env o el entorno)
+services:
+  cliente:
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+    image: grpc-img
+    command: ["python3", "client.py"]
+    environment:
+      - SERVIDOR=${SERVIDOR:?Define SERVIDOR=<IP del equipo A>:50051 en .env}

@@ -1,0 +1,11 @@
+# Equipo A: solo el servidor, publicado en el puerto 50051 del host
+services:
+  servidor:
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+    image: grpc-img
+    command: ["python3", "server.py"]
+    ports:
+      - "50051:50051"
+    restart: unless-stopped
